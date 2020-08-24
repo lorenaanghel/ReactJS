@@ -1,15 +1,33 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
+import Counter from "./Counter";
+import { createStore } from "redux";
 import { Provider } from "react-redux";
-import store from "./redux/store";
 
-import TodoApp from "./TodoApp";
+const initialState = {
+  count: 0,
+};
+function reducer(state = initialState, action) {
+  switch (action.type) {
+    case "INCREMENT":
+      return {
+        count: state.count + 1,
+      };
+    case "DECREMENT":
+      return {
+        count: state.count - 1,
+      };
+    default:
+      return state;
+  }
+}
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(
+const store = createStore(reducer);
+
+const App = () => (
   <Provider store={store}>
-    <TodoApp />
-  </Provider>,
-  rootElement
+    <Counter />
+  </Provider>
 );
+
+ReactDOM.render(<App />, document.getElementById("root"));
