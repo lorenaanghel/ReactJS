@@ -4,7 +4,7 @@ const initialState = {
   persons: [],
 };
 
-const addPersonReducer = (state = initialState, action) => {
+const addReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_PERSON: {
       const { user: person } = action.payload;
@@ -17,4 +17,4 @@ const addPersonReducer = (state = initialState, action) => {
       return { state };
   }
 };
-export default addPersonReducer;
+export default addReducer;

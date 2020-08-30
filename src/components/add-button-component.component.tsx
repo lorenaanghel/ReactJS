@@ -11,6 +11,8 @@ interface IState {
 }
 
 class AddPerson extends React.Component<IProps, IState> {
+  state: { input: string };
+  props: any;
   constructor(props) {
     super(props);
     this.state = { input: "" };
@@ -21,6 +23,9 @@ class AddPerson extends React.Component<IProps, IState> {
     const response = await fetch(url);
     const person = await response.json();
     this.setState({ input: person });
+  }
+  setState(arg0: { input: any }) {
+    throw new Error("Method not implemented.");
   }
 
   handleAddPerson = (input) => {
